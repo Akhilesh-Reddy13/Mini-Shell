@@ -20,6 +20,8 @@ func (s *Shell) repl(){
 			break
 		}
 		fmt.Println("You entered: ",line)
+		s.AddHistory(line)
+		s.Execute(line)
 	}
 
 } 
