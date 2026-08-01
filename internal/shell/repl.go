@@ -7,19 +7,17 @@ import (
 	"strings"
 )
 
-func (s *Shell) repl(){
+func (s *Shell) Repl(){
 	scanner := bufio.NewScanner(os.Stdin)
-
 	for {
-		fmt.Print("shell>")
+		fmt.Print(s.Prompt)
 		if !scanner.Scan(){
 			break
 		}
 		line := strings.TrimSpace(scanner.Text())
-		if line == "exit"{
-			break
+		if len(line) == 0 {
+			continue
 		}
-		fmt.Println("You entered: ",line)
 		s.AddHistory(line)
 		s.Execute(line)
 	}

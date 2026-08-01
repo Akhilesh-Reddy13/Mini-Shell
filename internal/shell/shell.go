@@ -38,5 +38,5 @@ func NewShell() *Shell{
 }
 
 func (s *Shell) Run() {
-	s.repl()
+	s.Repl()
 }
