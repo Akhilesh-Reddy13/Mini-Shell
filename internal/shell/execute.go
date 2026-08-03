@@ -17,7 +17,12 @@ func (s *Shell) Execute(line string) {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println(command)
+	//fmt.Println(command)
+	builtInFunc,ok  := LookUp(command.Name)
+	if ok {
+		builtInFunc(s,command)
+	}
+	//return executeExternal(command)
 	/*if line == "history"{
 		s.PrintHistory()
 	 	return
