@@ -9,12 +9,18 @@ import (
 func (s *Shell) Execute(line string) {
 	tokens := parser.Tokenize(line)
 	//Remove the test printing
-	for _,v := range tokens{
+	/*for _,v := range tokens{
 			fmt.Printf("%s - %s \n",v.Type,v.Value)
+	}*/
+	command,err := parser.Parse(tokens)
+	if err != nil {
+		fmt.Println(err)
+		return
 	}
+	fmt.Println(command)
 	/*if line == "history"{
 		s.PrintHistory()
-		return
+	 	return
 	} else if line == "exit"{
 		os.Exit(0)
 	}
