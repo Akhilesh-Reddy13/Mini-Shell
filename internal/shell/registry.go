@@ -7,10 +7,10 @@ import (
 type BuiltinFunc func(*Shell, parser.Command) error 
 
 var registry = map[string]BuiltinFunc{
-	/*"cd" : ,
-	"exit" : ,
-	"history" : , 
-	"pwd" :*/ 
+	"cd" : ChangeDirectory,
+	"exit" : Exit,
+	"history" : History, 
+	"pwd" :  WorkDir,
 }
 
 func LookUp(cmd string) (BuiltinFunc, bool) {

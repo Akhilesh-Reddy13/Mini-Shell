@@ -20,15 +20,14 @@ func (s *Shell) Execute(line string) {
 	//fmt.Println(command)
 	builtInFunc,ok  := LookUp(command.Name)
 	if ok {
-		builtInFunc(s,command)
+		err := builtInFunc(s,command)
+		if err != nil {
+			fmt.Println(err)
+		}
+	}
+	if !ok {
+		fmt.Println("builtin not found:", command.Name)
 	}
 	//return executeExternal(command)
-	/*if line == "history"{
-		s.PrintHistory()
-	 	return
-	} else if line == "exit"{
-		os.Exit(0)
-	}
-	fmt.Println("Unknown Command")
-*/
+	
 }

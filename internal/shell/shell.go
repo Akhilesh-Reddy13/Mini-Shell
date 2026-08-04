@@ -7,7 +7,6 @@ import (
 )
 
 type Shell struct{
-	Prompt string
 	CurrentDir string
 	Env map[string]string
 	History []HistoryEntry
@@ -29,7 +28,6 @@ func NewShell() *Shell{
 		env[result[0]] = result[1]
 	}
 	return &Shell{
-		Prompt: "myshell> ",
 		CurrentDir: cwd,
 		Env: env,
 		History: []HistoryEntry{},

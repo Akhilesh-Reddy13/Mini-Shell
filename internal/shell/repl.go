@@ -10,7 +10,7 @@ import (
 func (s *Shell) Repl(){
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
-		fmt.Print(s.Prompt)
+		fmt.Print(s.Prompt() ,"~")
 		if !scanner.Scan(){
 			break
 		}
