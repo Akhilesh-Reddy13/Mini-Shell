@@ -19,7 +19,10 @@ func (s *Shell) Repl(){
 			continue
 		}
 		s.AddHistory(line)
-		s.Execute(line)
+		err := s.Execute(line)
+		if err != nil{
+			fmt.Println(err)
+		}
 	}
 
 } 

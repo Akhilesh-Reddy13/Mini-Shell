@@ -8,9 +8,9 @@ import (
 func (s *Shell) Prompt() string {
 	cwd := s.CurrentDir
 	home := os.Getenv("HOME")
-	isHomePrefix := strings.HasPrefix(cwd,home)
-	if isHomePrefix {
-		return "~"+strings.TrimPrefix(cwd,home)
+	isHomePrefix := strings.HasPrefix(cwd,home+"/")
+	if (isHomePrefix  || home == cwd ){
+		return strings.TrimPrefix(cwd,home)
 	}else{
 		return cwd
 	}

@@ -1,12 +1,11 @@
 package shell
 
 import (
-	"fmt"
 	//"os"
 	"minishell/internal/parser"
 )
 
-func (s *Shell) Execute(line string) {
+func (s *Shell) Execute(line string) error{
 	tokens := parser.Tokenize(line)
 	//Remove the test printing
 	/*for _,v := range tokens{
@@ -14,20 +13,20 @@ func (s *Shell) Execute(line string) {
 	}*/
 	command,err := parser.Parse(tokens)
 	if err != nil {
-		fmt.Println(err)
-		return
+		return err
 	}
 	//fmt.Println(command)
 	builtInFunc,ok  := LookUp(command.Name)
 	if ok {
 		err := builtInFunc(s,command)
 		if err != nil {
-			fmt.Println(err)
+			return err
 		}
+	} else {
+		err := ExecuteExternal(command)
+		if err != nil {
+			return err
+		} 
 	}
-	if !ok {
-		fmt.Println("builtin not found:", command.Name)
-	}
-	//return executeExternal(command)
-	
+	return nil
 }
