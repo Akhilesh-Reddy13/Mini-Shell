@@ -1,8 +1,9 @@
-package shell
+package executor
 
 import (
 	//"os"
 	"minishell/internal/parser"
+	
 )
 
 func (s *Shell) Execute(line string) error{

@@ -1,8 +1,9 @@
-package shell
+package history
 
 import (
 	"fmt"
 	"time"
+	"minishell/internal/shell"
 )
 
 type HistoryEntry struct{

@@ -1,8 +1,8 @@
 package shell
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
 	"strings"
 )

@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"strings"
+	"minishell/internal/history"
 )
 
 type Shell struct{
